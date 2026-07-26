@@ -1,0 +1,19 @@
+day-00/package-lock.json
+  s_e1a4cc95e76b55::t_038209dea8597d 1-4610
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "24ea1109af562b492ca6518acbf9e9eda00de846",
+  "prompts": {},
+  "sessions": {
+    "s_e1a4cc95e76b55": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec218a87-8b01-4bf8-9d0c-879766a5c833",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
