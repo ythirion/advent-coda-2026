@@ -28,13 +28,16 @@ class SockMatcher {
         (a: Sock, b: Sock) => hasSamePattern(a, b) ? SockMatcher.PATTERN_WEIGHT : 0,
         (a: Sock, b: Sock) => hasSameColor(a, b) ? SockMatcher.COLOR_WEIGHT : 0,
         (a: Sock, b: Sock) => hasSameMaterial(a, b) ? SockMatcher.MATERIAL_WEIGHT : 0,
-        (a: Sock, b: Sock) => Math.max(0, SockMatcher.SIZE_WEIGHT - Math.abs(a.size - b.size) * SockMatcher.SIZE_PENALTY_PER_POINT),
-        (a: Sock, b: Sock) => Math.max(0, SockMatcher.WARMTH_WEIGHT - Math.abs(a.warmth - b.warmth) * SockMatcher.WARMTH_PENALTY_PER_POINT),
+        (a: Sock, b: Sock) => this.calulateScoreFor(SockMatcher.SIZE_WEIGHT, sock => sock.size, a, b, SockMatcher.SIZE_PENALTY_PER_POINT),
+        (a: Sock, b: Sock) => this.calulateScoreFor(SockMatcher.WARMTH_WEIGHT, sock => sock.warmth, a, b, SockMatcher.WARMTH_PENALTY_PER_POINT),
         (a: Sock, b: Sock) => seemsIdentical(a, b) ? SockMatcher.MATCH_BONUS : 0,
     ];
 
     public static isPair = (a: Sock, b: Sock): boolean =>
         SockMatcher.computeCompatibilityScore(a, b) >= SockMatcher.PERFECT_MATCH_SCORE;
+
+    private static calulateScoreFor = (weight: number, value: (sock: Sock) => number, a: Sock, b: Sock, penalty: number) =>
+        Math.max(0, weight - Math.abs(value(a) - value(b)) * penalty);
 
     private static computeCompatibilityScore = (a: Sock, b: Sock): number =>
         SockMatcher.SCORERS.reduce((score, scorer) => score + scorer(a, b), 0);
