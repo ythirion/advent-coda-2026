@@ -1,0 +1,14 @@
+day-00/src/sock-matcher.ts
+  h_0a88d9aba8622a 31-32,39-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "a4bc74d14b73b248f70c6735f3864990458dd7b5",
+  "prompts": {},
+  "humans": {
+    "h_0a88d9aba8622a": {
+      "author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
